@@ -3,16 +3,16 @@ var fs = require('fs')
 var config = fs.readFileSync(`${__dirname}/config.json`)
 var mongoData = JSON.parse(config);
 var databaseUrl = mongoData.development.url
-class mongoEvent{
-    
+class mongoEvent {
+
     mongoEvent() {
 
-        mongoose.connect(databaseUrl,{useNewUrlParser: true,useUnifiedTopology: true});
+        mongoose.connect(databaseUrl, { useNewUrlParser: true, useUnifiedTopology: true });
         /**
          * @description:for providing mongoose connection
          */
         mongoose.connection.on('connected', function () {
-           
+
             console.log("Mongoose default connection is open to ", databaseUrl);
         });
         /**
@@ -38,5 +38,5 @@ class mongoEvent{
         });
     }
 }
-var mongoEvents= new mongoEvent();
+var mongoEvents = new mongoEvent();
 module.exports = mongoEvents

@@ -4,13 +4,16 @@
   "description": "iflix",
   "main": "index.js",
   "scripts": {
-    "test": "mocha || true"
+    "test": "mocha || true",
+    "start": "nodemon server.js",
+    "dev": "nodemon server.js"
   },
   "author": "Dipali kelkar",
   "license": "ISC",
   "dependencies": {
     "body-parser": "^1.19.0",
     "chai": "^4.2.0",
+    "dotenv": "^8.1.0",
     "express": "^4.17.1",
     "express-validator": "^6.2.0",
     "jsonwebtoken": "^8.5.1",

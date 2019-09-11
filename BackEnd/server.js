@@ -1,8 +1,9 @@
 const express = require('express');
-var databaseConnection=require('./Config/databaseConfig')
+var databaseConnection = require('./Config/databaseConfig')
 const app = express();
-const server = app.listen(3000, () => {
-    console.log("Server started at port :",3000);
+require('dotenv').config()
+const server = app.listen(process.env.PORT, () => {
+    console.log("Server started at port :", process.env.PORT);
 })
 databaseConnection.mongoEvent();
-module.exports=app;
+module.exports = app;
