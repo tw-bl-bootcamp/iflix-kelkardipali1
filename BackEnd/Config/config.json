@@ -1,0 +1,22 @@
+{
+    "development": {
+        "config_id": "development",
+        "app_name": "Iflix",
+        "node_port": 3000,
+        "json_indentation": 4,
+        "database": "mongoose",
+        "url":"mongodb://localhost:27017/iflix"
+    },
+    "testing": {
+        "config_id": "testing",
+        "node_port": 3000
+    },
+    "staging": {
+        "config_id": "staging",
+        "node_port": 3000
+    },
+    "production": {
+        "config_id": "production",
+        "node_port": 3000
+    }
+}
