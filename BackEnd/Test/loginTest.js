@@ -39,4 +39,16 @@ describe('Login Test', () => {
         })
     })
 
+    it('GivenValidEmailAndPasswordWithFifteenLength_WhenValidate_ThenReturnUnprocessableEntity', (done) => {
+        this.timeout = 10000;
+        userData = {
+            "email":"Dipali@gmail.com",
+            "password": "dipalikelkar123"
+        }
+        chai.request(server).post('/login').send(userData).end((err, res) => {
+            assert.equal(422, res.status)
+            done();
+        })
+    })
+
 })
