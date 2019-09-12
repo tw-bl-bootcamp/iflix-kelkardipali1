@@ -58,6 +58,18 @@ describe('Login Test', () => {
             "password": "dipalikelkar"
         }
         chai.request(server).post('/login').send(userData).end((err, res) => {
+            assert.equal(422, res.status)
+            done();
+        })
+    })
+
+    it('GivenValidEmailAndValidPassword_WhenValidate_ThenReturnOK', (done) => {
+        this.timeout = 10000;
+        userData = {
+            "email":"Dipali@gmail.com",
+            "password": "Dipali@12345"
+        }
+        chai.request(server).post('/login').send(userData).end((err, res) => {
             assert.equal(200, res.status)
             done();
         })
