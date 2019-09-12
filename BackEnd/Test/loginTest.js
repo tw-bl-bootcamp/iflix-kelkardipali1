@@ -51,4 +51,16 @@ describe('Login Test', () => {
         })
     })
 
+    it('GivenValidEmailAndPasswordWithTwelveLength_WhenValidate_ThenReturnOK', (done) => {
+        this.timeout = 10000;
+        userData = {
+            "email":"Dipali@gmail.com",
+            "password": "dipalikelkar"
+        }
+        chai.request(server).post('/login').send(userData).end((err, res) => {
+            assert.equal(200, res.status)
+            done();
+        })
+    })
+
 })
