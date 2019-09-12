@@ -14,4 +14,14 @@ describe('Login Test', () => {
             done();
         })
     })
+    it('GivenEmptyEmail_WhenValidate_ThenReturnStatusunprocessableEntity', (done) => {
+        this.timeout = 10000;
+        userData = {
+            "email": " "
+        }
+        chai.request(server).post('/login').send(userData).end((err, res) => {
+            assert.equal(422, res.status)
+            done();
+        })
+    })
 })

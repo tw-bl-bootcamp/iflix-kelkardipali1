@@ -1,5 +1,5 @@
 exports.login = (req, res) => {
-    req.checkBody('email', 'Invalid email').isEmail();
+    req.checkBody('email', 'Invalid email').isEmail().not().isEmpty();
     var validationError = req.validationErrors();
     var errorResponse= {};
     var successResponse={};
