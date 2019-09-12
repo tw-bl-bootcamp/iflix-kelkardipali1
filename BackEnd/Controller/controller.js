@@ -1,5 +1,6 @@
 exports.login = (req, res) => {
     req.checkBody('email', 'Invalid email').isEmail().not().isEmpty();
+    req.checkBody("password", "password is not valid").isLength({ min: 3 })
     var validationError = req.validationErrors();
     var errorResponse= {};
     var successResponse={};
