@@ -29,4 +29,12 @@ describe('Login Test', () => {
         })
     })
 
+    it('GivenValidSeatNoAndvalidUserId_When_ThenReturnValidate', (done) => {
+        this.timeout = 10000;
+        chai.request(server).post('/bookSeat').send({ seatNo: 2, userId: "Dipali@gmail.com" }).end((err, res) => {
+            assert.equal('validate', res.body.message)
+            done();
+        })
+    })
+
 })
