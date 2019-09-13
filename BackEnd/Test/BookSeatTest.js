@@ -5,7 +5,7 @@ chai.use(chaiHttp);
 var server = require('../server');
 describe('Login Test', () => {
 
-    it('GivenSeatNowithTypeStringAndvalidUserId_When_ThenReturnStatusUnprocessableEntity', (done) => {
+    it('GivenSeatNowithTypeStringAndvalidUserId_WhenBookingSeat_ThenReturnStatusUnprocessableEntity', (done) => {
         this.timeout = 10000;
         chai.request(server).post('/bookSeat').send({ seatNo: 'p', userId: "Dipali@gmail.com" }).end((err, res) => {
             assert.equal(422, res.status)
@@ -13,7 +13,7 @@ describe('Login Test', () => {
         })
     })
 
-    it('GivenNullSeatNoAndvalidUserId_When_ThenReturnStatusUnprocessableEntity', (done) => {
+    it('GivenNullSeatNoAndvalidUserId_WhenBookinSeat_ThenReturnStatusUnprocessableEntity', (done) => {
         this.timeout = 10000;
         chai.request(server).post('/bookSeat').send({ seatNo: null, userId: "Dipali@gmail.com" }).end((err, res) => {
             assert.equal(422, res.status)
@@ -21,7 +21,7 @@ describe('Login Test', () => {
         })
     })
 
-    it('GivenZeroSeatNoAndvalidUserId_When_ThenReturnInvalidDataPassed', (done) => {
+    it('GivenZeroSeatNoAndvalidUserId_WhenBookingSeat_ThenReturnInvalidDataPassed', (done) => {
         this.timeout = 10000;
         chai.request(server).post('/bookSeat').send({ seatNo: 0, userId: "Dipali@gmail.com" }).end((err, res) => {
             assert.equal('Invalid data passed', res.body.message)
@@ -29,7 +29,7 @@ describe('Login Test', () => {
         })
     })
 
-    it('GivenValidSeatNoAndvalidUserId_When_ThenReturnValidate', (done) => {
+    it('GivenValidSeatNoAndvalidUserId_WhenBookingSeat_ThenReturnValidate', (done) => {
         this.timeout = 10000;
         chai.request(server).post('/bookSeat').send({ seatNo: 2, userId: "Dipali@gmail.com" }).end((err, res) => {
             assert.equal('validate', res.body.message)
