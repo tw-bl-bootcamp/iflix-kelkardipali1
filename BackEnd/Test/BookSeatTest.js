@@ -21,10 +21,10 @@ describe('Login Test', () => {
         })
     })
 
-    it('GivenZeroSeatNoAndvalidUserId_When_ThenReturnStatusUnprocessableEntity', (done) => {
+    it('GivenZeroSeatNoAndvalidUserId_When_ThenReturnInvalidDataPassed', (done) => {
         this.timeout = 10000;
         chai.request(server).post('/bookSeat').send({ seatNo: 0, userId: "Dipali@gmail.com" }).end((err, res) => {
-            assert.equal(422, res.status)
+            assert.equal('Invalid data passed', res.body.message)
             done();
         })
     })
