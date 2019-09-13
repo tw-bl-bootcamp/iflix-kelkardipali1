@@ -5,10 +5,11 @@ chai.use(chaiHttp);
 var server = require('../server');
 describe('Login Test', () => {
 
-    it('GivenInvalidEmail_WhenValidate_ThenReturnStatusUnprocessableEntity', (done) => {
+    it('GivenInvalidEmailAndInvalidPassword_WhenValidate_ThenReturnStatusUnprocessableEntity', (done) => {
         this.timeout = 10000;
         userData = {
-            "email": "Dipaligmail.com"
+            "email": "Dipaligmail.com",
+            "password": "dipali"
         }
         chai.request(server).post('/login').send(userData).end((err, res) => {
             assert.equal(422, res.status)
@@ -16,10 +17,11 @@ describe('Login Test', () => {
         })
     })
 
-    it('GivenEmptyEmail_WhenValidate_ThenReturnStatusunprocessableEntity', (done) => {
+    it('GivenEmptyEmailAndEmptyPassword_WhenValidate_ThenReturnStatusunprocessableEntity', (done) => {
         this.timeout = 10000;
         userData = {
-            "email": " "
+            "email": " ",
+            "password": " "
         }
         chai.request(server).post('/login').send(userData).end((err, res) => {
             assert.equal(422, res.status)
@@ -30,7 +32,7 @@ describe('Login Test', () => {
     it('GivenValidEmailAndPasswordWithTwoLength_WhenValidate_ThenReturnUnprocessableEntity', (done) => {
         this.timeout = 10000;
         userData = {
-            "email":"Dipali@gmail.com",
+            "email": "Dipali@gmail.com",
             "password": "di"
         }
         chai.request(server).post('/login').send(userData).end((err, res) => {
@@ -42,7 +44,7 @@ describe('Login Test', () => {
     it('GivenValidEmailAndPasswordWithFifteenLength_WhenValidate_ThenReturnUnprocessableEntity', (done) => {
         this.timeout = 10000;
         userData = {
-            "email":"Dipali@gmail.com",
+            "email": "Dipali@gmail.com",
             "password": "dipalikelkar123"
         }
         chai.request(server).post('/login').send(userData).end((err, res) => {
@@ -54,7 +56,7 @@ describe('Login Test', () => {
     it('GivenValidEmailAndPasswordWithTwelveLength_WhenValidate_ThenReturnOK', (done) => {
         this.timeout = 10000;
         userData = {
-            "email":"Dipali@gmail.com",
+            "email": "Dipali@gmail.com",
             "password": "dipalikelkar"
         }
         chai.request(server).post('/login').send(userData).end((err, res) => {
@@ -66,7 +68,7 @@ describe('Login Test', () => {
     it('GivenValidEmailAndValidPassword_WhenValidate_ThenReturnLoginSuccessfully', (done) => {
         this.timeout = 10000;
         userData = {
-            "email":"Dipali@gmail.com",
+            "email": "Dipali@gmail.com",
             "password": "Dipali@12345"
         }
         chai.request(server).post('/login').send(userData).end((err, res) => {
