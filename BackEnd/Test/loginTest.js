@@ -63,7 +63,7 @@ describe('Login Test', () => {
         })
     })
 
-    it('GivenValidEmailAndValidPassword_WhenValidate_ThenReturnOK', (done) => {
+    it('GivenValidEmailAndValidPassword_WhenValidate_ThenReturnLoginSuccessfully', (done) => {
         this.timeout = 10000;
         userData = {
             "email":"Dipali@gmail.com",
