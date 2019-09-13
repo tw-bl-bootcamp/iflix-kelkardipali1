@@ -11,4 +11,13 @@ describe('getMovieList Test', () => {
             done();
         })
     })
+
+    it('GivenAvailablePath_WhenGetTheaterList_ThenReturnTheaterList', (done) => {
+        chai.request(server).get('/theaterList').end((err, res) => {
+            console.log(res.body)
+            assert.equal(200,res.status)
+            done();
+        })
+    })
+    
 })
