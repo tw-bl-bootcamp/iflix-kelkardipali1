@@ -5,7 +5,7 @@ chai.use(chaiHttp);
 var server = require('../server');
 describe('getMovieList Test', () => {
 
-    it('Given_WhenFind_ThenReturnMovieList', (done) => {
+    it('GivenPathToMovie_WhenFind_ThenReturnMovieList', (done) => {
         chai.request(server).get('/movieList').end((err, res) => {
             assert.equal(200, res.status)
             done();
