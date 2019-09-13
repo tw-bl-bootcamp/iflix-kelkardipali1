@@ -1,5 +1,5 @@
 exports.bookSeat = (req, res) => {
-    req.checkBody('seatNo', 'Invalid seatNo').matches(/[0-9]/);
+    req.checkBody('seatNo', 'Invalid seatNo').matches(/[1-9]/);
     var validationError = req.validationErrors();
     var errorResponse = {};
     var successResponse = {};
