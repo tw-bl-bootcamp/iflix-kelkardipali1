@@ -11,10 +11,17 @@ const theaterSchema = mongoose.Schema({
     }
 })
 var theater = mongoose.model('theaters', theaterSchema);
+class Theater {
+    getTheaterList(callback) {
+        theater.find((err, result) => {
+            err ? callback(err) : callback(null, result);
+        })
 
-exports.getTheaterList = (callback) => {
-    theater.find((err, result) => {
-        err ? callback(err) : callback(null, result);
-    })
+    }
+    model() {
+        return theater;
+    }
 
 }
+var theaterObj=new Theater()
+module.exports=theaterObj
