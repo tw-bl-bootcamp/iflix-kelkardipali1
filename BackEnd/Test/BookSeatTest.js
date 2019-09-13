@@ -15,7 +15,15 @@ describe('Login Test', () => {
 
     it('GivenNullSeatNoAndvalidUserId_When_ThenReturnStatusUnprocessableEntity', (done) => {
         this.timeout = 10000;
-        chai.request(server).post('/bookSeat').send({ seatNo:null, userId: "Dipali@gmail.com" }).end((err, res) => {
+        chai.request(server).post('/bookSeat').send({ seatNo: null, userId: "Dipali@gmail.com" }).end((err, res) => {
+            assert.equal(422, res.status)
+            done();
+        })
+    })
+
+    it('GivenZeroSeatNoAndvalidUserId_When_ThenReturnStatusUnprocessableEntity', (done) => {
+        this.timeout = 10000;
+        chai.request(server).post('/bookSeat').send({ seatNo: 0, userId: "Dipali@gmail.com" }).end((err, res) => {
             assert.equal(422, res.status)
             done();
         })
