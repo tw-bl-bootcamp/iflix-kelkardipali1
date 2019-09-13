@@ -9,7 +9,7 @@ describe('Login Test', () => {
         this.timeout = 10000;
         userData = {
             "email": "Dipaligmail.com",
-            "password": "dipali"
+            "password": "di"
         }
         chai.request(server).post('/login').send(userData).end((err, res) => {
             assert.equal(422, res.status)

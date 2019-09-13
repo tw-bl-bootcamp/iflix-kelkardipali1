@@ -1,5 +1,7 @@
-const express = require('express')
-var controller=require('../Controller/userController')
+const express = require('express');
+var user=require('../Controller/user');
+var movies=require('../Controller/movie');
 const routes = express.Router();
-routes.post('/login', controller.login);
+routes.post('/login', user.login);
+routes.get('/movieList',movies.getMovieList);
 module.exports=routes;
