@@ -3,7 +3,7 @@ var fs = require('fs')
 var config = fs.readFileSync(`${__dirname}/config.json`)
 var mongoData = JSON.parse(config);
 var databaseUrl = mongoData.development.url
-class mongoEvent {
+class MongoEvent {
 
     mongoEvent() {
 
